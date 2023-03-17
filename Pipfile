@@ -8,6 +8,7 @@ fastapi = {extras = ["all"], version = "*"}
 alembic = "==1.9.4"
 mysqlclient = "==2.1.1"
 sqlalchemy = "==2.0.4"
+pytest = "*"
 
 [dev-packages]
 

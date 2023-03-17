@@ -1,5 +1,5 @@
 import sqlalchemy as sa
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from core import dependencies, models
@@ -28,6 +28,7 @@ def list_teacher(
 @router.post(
     "/",
     response_model=teacher_schema.ReadTeacherSchema,
+    status_code=status.HTTP_201_CREATED,
 )
 def create_teacher(
     item: teacher_schema.CreateTeacherSchema, db: Session = Depends(dependencies.get_db)
@@ -62,6 +63,7 @@ def update_teacher(
 @router.delete(
     "/{teacher_id}",
     response_model=teacher_schema.ReadTeacherSchema,
+    status_code=status.HTTP_204_NO_CONTENT,
 )
 def delete_teacher(
     teacher_id: int,

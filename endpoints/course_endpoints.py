@@ -1,5 +1,5 @@
 import sqlalchemy as sa
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from core import dependencies, models
@@ -28,6 +28,7 @@ def list_courses(
 @router.post(
     "/",
     response_model=course_schema.ReadCourseSchema,
+    status_code=status.HTTP_201_CREATED,
 )
 def create_course(
     item: course_schema.CreateCourseSchema, db: Session = Depends(dependencies.get_db)
@@ -79,6 +80,7 @@ def update_course(
 @router.delete(
     "/{course_id}",
     response_model=course_schema.ReadCourseSchema,
+    status_code=status.HTTP_204_NO_CONTENT,
 )
 def delete_course(
     course_id: int,

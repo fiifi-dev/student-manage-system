@@ -1,5 +1,5 @@
 import sqlalchemy as sa
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from core import dependencies, models
@@ -30,6 +30,7 @@ def list_assessments(
 @router.post(
     "/",
     response_model=assessment_schema.ReadAssessmentSchema,
+    status_code=status.HTTP_200_OK,
 )
 def create_assessment(
     item: assessment_schema.CreateAssessmentSchema,
@@ -65,6 +66,7 @@ def update_assessment(
 @router.delete(
     "/{assessment_id}",
     response_model=assessment_schema.ReadAssessmentSchema,
+    status_code=status.HTTP_204_NO_CONTENT,
 )
 def delete_assessment(
     assessment_id: int,

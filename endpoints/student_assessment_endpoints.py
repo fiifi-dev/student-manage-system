@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from core import dependencies
@@ -11,6 +11,7 @@ router = APIRouter()
 @router.post(
     "/",
     response_model=student_assessment_schema.ReadStudentAssessmentSchema,
+    status_code=status.HTTP_201_CREATED,
 )
 def create_student_course(
     item: student_assessment_schema.CreateStudentAssessmentSchema,
@@ -35,6 +36,7 @@ def update_student_course(
 @router.delete(
     "/{student_course_id}",
     response_model=student_assessment_schema.ReadStudentAssessmentSchema,
+    status_code=status.HTTP_204_NO_CONTENT,
 )
 def delete_student_course(
     student_course_id: int,

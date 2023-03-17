@@ -1,5 +1,5 @@
 import sqlalchemy as sa
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from core import models, dependencies
@@ -28,6 +28,7 @@ def list_students(
 @router.post(
     "/",
     response_model=student_schema.ReadStudentSchema,
+    status_code=status.HTTP_201_CREATED,
 )
 def create_student(
     item: student_schema.CreateStudentSchema, db: Session = Depends(dependencies.get_db)

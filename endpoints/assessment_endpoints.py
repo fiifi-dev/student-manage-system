@@ -66,7 +66,6 @@ def update_assessment(
 @router.delete(
     "/{assessment_id}",
     response_model=assessment_schema.ReadAssessmentSchema,
-    status_code=status.HTTP_204_NO_CONTENT,
 )
 def delete_assessment(
     assessment_id: int,

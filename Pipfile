@@ -9,6 +9,8 @@ alembic = "==1.9.4"
 mysqlclient = "==2.1.1"
 sqlalchemy = "==2.0.4"
 pytest = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+gunicorn = "*"
 
 [dev-packages]
 

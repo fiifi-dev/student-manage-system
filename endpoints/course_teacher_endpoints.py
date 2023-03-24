@@ -36,7 +36,6 @@ def update_course_teacher(
 @router.delete(
     "/{course_teacher_id}",
     response_model=course_teacher_schema.ReadCourseTeacherSchema,
-    status_code=status.HTTP_204_NO_CONTENT,
 )
 def delete_course_teacher(
     course_teacher_id: int,

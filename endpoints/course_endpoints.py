@@ -80,7 +80,6 @@ def update_course(
 @router.delete(
     "/{course_id}",
     response_model=course_schema.ReadCourseSchema,
-    status_code=status.HTTP_204_NO_CONTENT,
 )
 def delete_course(
     course_id: int,

@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
 
 
 from endpoints import (
@@ -11,6 +11,15 @@ from endpoints import (
 )
 
 app = FastAPI()
+
+
+# @app.middleware("http")
+# async def log_stats(request: Request, call_next):
+
+#     response: Response = await call_next(request)
+#     print(response.headers)
+#     print(request.client)
+#     return response
 
 
 @app.get("/")

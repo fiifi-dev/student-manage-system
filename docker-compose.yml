@@ -1,0 +1,16 @@
+services:
+  app:
+    image: registry.flarewebs.com/fiifidev/lpa_api
+    restart: always
+    ports:
+      - "8000:80"
+    env_file:
+      - .env
+    networks:
+      - db-network
+
+
+networks:
+  db-network:
+    external: true
+    name: 'db-network'
